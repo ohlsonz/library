@@ -33,6 +33,8 @@ local resourceName = GetCurrentResourceName()
 --- @field public destroy fun(self: self); Destroys the scene.
 --- @field public localHandle integer; The local handle for the scene. (NetworkGetLocalSceneFromNetworkId)
 --- @field private loadedAnimations string[]; All the loaded animations. Used for cleanup when the scene is destroyed.
+--- @field public addedPeds NetScenePed[]; All the peds you have added to the scene.
+--- @field public addedEntities NetSceneEntity[]; All the entities tou have added to the scene.
 --- @field private eventHandler EventHandler; Creating a event handler that destroys the scene if the invoking resource is stopped.
 
 --- @class (exact) NetSceneOptions
@@ -89,6 +91,12 @@ function _G.NetScene:new(options)
         --- @type string[]
         loadedAnimations = {}
     }, _G.NetScene)
+
+    --- @type NetSceneEntity[]
+    self.addedEntities = {}
+
+    --- @type NetScenePed[]
+    self.addedPeds = {}
 
     --- @type vector3
     self.location = options.location
@@ -180,7 +188,7 @@ function _G.NetScene:addEntity(entity)
 
     NetworkAddEntityToSynchronisedScene(entity.handle, self.handle, entity.animDict, entity.animName, blendIn, blendOut, flag)
 
-    table.insert(self.entities, {
+    table.insert(self.addedEntities, {
         handle = entity.handle,
         animDict = entity.animDict,
         animName = entity.animName,
@@ -244,7 +252,7 @@ function _G.NetScene:addPed(ped)
 
     NetworkAddPedToSynchronisedScene(ped.handle, self.handle, ped.animDict, ped.animName, blendInSpeed, blendOutSpeed, syncedSceneFlags, ragdollFlags, moverBlendInDelta, ikFlags)
 
-    table.insert(self.peds, {
+    table.insert(self.addedPeds, {
         handle = ped.handle,
         animDict = ped.animDict,
         animName = ped.animName,
