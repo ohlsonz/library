@@ -283,22 +283,3 @@ function _G.NetScene:destroy()
     self.addedEntities = {}
     self.addedPeds = {}
 end
-
-local scene = NetScene:new({
-    location = vector3(0.0, 0.0, 0.0),
-    rotation = vector3(0.0, 0.0, 0.0),
-    entities = {
-        {
-            handle = 1,
-            animDict = "",
-            animName = "",
-        }
-    },
-    peds = {
-        {
-            handle = 1,
-            animDict = "",
-            animName = ""
-        }
-    }
-})
