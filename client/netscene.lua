@@ -35,10 +35,11 @@ function _G.NetScene:new(options)
     --- @type NetScene
     self = setmetatable({
         --- @param rn string
+        --- @type EventHandler
         eventHandler = AddEventHandler("onResourceStop", function(rn)
             if rn ~= resourceName then return end
 
-            --- destrory
+            --- destroy
         end)
     }, _G.NetScene)
 

@@ -31,6 +31,7 @@ function _G.Model:request(model)
     --- @type Model
     self = setmetatable({
         --- @param rn string
+        --- @type EventHandler
         eventHandler = AddEventHandler("onResourceStop", function(rn)
             if rn ~= resourceName then return end
 
