@@ -67,8 +67,7 @@ function _G.NetScene:new(options)
     --- @type number
     self.animSpeed = type(options.animSpeed) == "number" and options.animSpeed or 1.0
 
-    
 
     --- @type NetScene
-    return NetScene
+    return self
 end
