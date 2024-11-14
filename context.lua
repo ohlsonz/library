@@ -1,0 +1,1 @@
+--- @alias EventHandler { key: number, name: string }
