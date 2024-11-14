@@ -278,6 +278,9 @@ function _G.NetScene:destroy()
             table.remove(self.loadedAnimations, k)
         end
     end
+
+    self.addedEntities = {}
+    self.addedPeds = {}
 end
 
 local scene = NetScene:new({
