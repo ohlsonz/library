@@ -268,6 +268,7 @@ end
 --- @public
 function _G.NetScene:destroy()
     NetworkStopSynchronisedScene(self.handle)
+    TakeOwnershipOfSynchronizedScene(self.localHandle)
 
     if type(self.loadedAnimations) == "table" and #self.loadedAnimations >= 1 then
         for k, v in pairs(self.loadedAnimations) do
